@@ -1,24 +1,27 @@
-🧠 Multi-Tool AI Agent (CSV → SQLite → SQL Agents → Master Agent)
+🧠 Multi-Tool AI Agent
+CSV → SQLite → SQL Agents → Master Routing Agent
 
-This project builds a Multi-Agent AI system that can answer questions from multiple structured datasets using natural language.
 
-The system converts CSV datasets into SQLite databases, creates SQL Agents for each database, wraps them as tools, and then uses a Master AI Agent to intelligently choose which tool to use based on the user's query.
 
-In addition, the agent can also perform web search using DuckDuckGo when the query is not related to the datasets.
+
+
+
+
+
+A Multi-Agent AI system that can answer questions from multiple structured datasets using natural language.
+
+This project converts CSV datasets into SQLite databases, creates SQL Agents for each dataset, wraps them as tools, and then uses a Master AI Agent to decide which database to query.
+
+The system can also perform web search using DuckDuckGo for questions unrelated to the datasets.
 
 🚀 Features
 
-Query multiple databases using natural language
-
-Automatic agent routing to the correct database
-
-SQL agents powered by LangChain
-
-Web search tool using DuckDuckGo
-
-Supports structured + unstructured queries
-
-Built with LangChain + OpenAI-compatible LLM
+✅ Natural language queries over multiple databases
+✅ Automatic tool routing by a master agent
+✅ SQL Agents powered by LangChain
+✅ Web search integration (DuckDuckGo)
+✅ Supports structured + unstructured queries
+✅ Scalable multi-agent architecture
 
 🏗️ Architecture
 User Question
@@ -34,7 +37,7 @@ Master AI Agent (Router)
       │
       └── Web Search Tool → DuckDuckGo
 
-The Master Agent decides which tool to use automatically.
+The Master Agent automatically selects the correct tool based on the user’s question.
 
 📂 Project Structure
 project-root/
@@ -46,16 +49,15 @@ project-root/
 │   │   └── diabetes.csv
 │   │
 │   └── SQL_DB/
-│       ├── heart.db        (auto created)
-│       ├── cancer.db       (auto created)
-│       └── diabetes.db     (auto created)
+│       ├── heart.db
+│       ├── cancer.db
+│       └── diabetes.db
 │
 ├── Multi Tool AI Agent main code.ipynb
 └── README.md
 
-⚠️ Important
-
-The .db files will be automatically created when the notebook runs.
+⚠️ Note:
+The .db files are automatically created when the notebook runs.
 
 ⚙️ Requirements
 
@@ -65,80 +67,35 @@ Jupyter Notebook
 
 OpenAI-compatible API
 
-Python Libraries
-
-Install the required packages:
-
+Install Dependencies
 pip install pandas pyprojroot sqlalchemy langchain langchain-community langchain-openai duckduckgo-search jupyter
-🔑 API Configuration
-
-Inside the notebook you will see:
-
-model_name = "..."
-token = "..."
-endpoint = "..."
-
-Replace them with your actual values.
-
-Example:
-
-model_name = "gpt-4o"
-token = "YOUR_API_KEY"
-endpoint = "https://api.openai.com/v1"
-▶️ How to Run the Project
-
-Follow these steps to run the repository locally.
-
-1️⃣ Clone the Repository
+⚡ Quick Start
+1️⃣ Clone the repository
 git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
-2️⃣ Create Virtual Environment (Recommended)
+2️⃣ Create virtual environment
 python -m venv venv
 
 Activate it.
 
 Windows
+
 venv\Scripts\activate
-Mac / Linux
+
+Mac/Linux
+
 source venv/bin/activate
-3️⃣ Install Dependencies
+3️⃣ Install dependencies
 pip install pandas pyprojroot sqlalchemy langchain langchain-community langchain-openai duckduckgo-search jupyter
-4️⃣ Verify Data Folder
-
-Make sure the CSV files exist:
-
-data/CSV_xlsx/
-heart.csv
-The_Cancer_data_1500_V2.csv
-diabetes.csv
-5️⃣ Run Jupyter Notebook
+4️⃣ Run Jupyter Notebook
 jupyter notebook
 
-Open the file:
+Open:
 
 Multi Tool AI Agent main code.ipynb
-6️⃣ Run All Cells
 
 Run the notebook from top to bottom.
 
-The notebook will:
-
-1️⃣ Load CSV files
-2️⃣ Create SQLite databases
-3️⃣ Store data in SQL tables
-4️⃣ Create SQL agents
-5️⃣ Wrap agents as tools
-6️⃣ Build the master routing agent
-
-7️⃣ Ask Questions
-
-Example query:
-
-agent_executor.invoke({
-    "messages": [
-        ("user","Tell me how many patients are over 50 years old in diabetes database?")
-    ]
-})
 🧪 Example Queries
 How many heart disease patients are male?
 
@@ -148,19 +105,17 @@ How many cancer patients are above 60 years old?
 
 Search latest research on diabetes treatment
 
-The master agent will automatically choose the correct tool.
+The Master Agent will automatically choose the correct tool.
 
-🧠 Design Pattern
+🧠 How It Works
 
-This project demonstrates Hierarchical Multi-Agent Architecture.
+1️⃣ Load CSV datasets
+2️⃣ Convert datasets to SQLite databases
+3️⃣ Create SQL Agents for each database
+4️⃣ Wrap SQL agents as LangChain tools
+5️⃣ Build a Master Agent that routes queries
+6️⃣ Execute natural language questions
 
-Components:
-
-Component	Role
-SQL Agents	Query individual databases
-Tools	Wrap SQL agents
-Master Agent	Decide which tool to call
-DuckDuckGo Tool	Handle general knowledge queries
 ⚠️ Common Errors
 no such table
 
@@ -175,26 +130,26 @@ NameError: here not defined
 Add:
 
 from pyprojroot import here
-API errors
+API Key Error
 
-Check:
+Make sure these variables are set in the notebook:
 
 model_name
 token
 endpoint
-📌 Why This Project Is Useful
+📌 Why This Project Matters
 
 This project demonstrates:
 
-Multi-database AI systems
-
-Tool-based agent orchestration
+Multi-agent AI systems
 
 Natural language → SQL querying
 
+Tool-based agent orchestration
+
 Combining structured data + web search
 
-This architecture is commonly used in AI data assistants and enterprise analytics agents.
+This architecture is used in AI data assistants and enterprise analytics systems.
 
 👤 Author
 
@@ -203,6 +158,6 @@ Iqbal
 AI / ML Enthusiast
 LangChain | Multi-Agent Systems | Data AI
 
-⭐ If you like this project
+⭐ Support
 
-Consider giving it a ⭐ on GitHub!
+If you find this project useful, please consider starring the repository ⭐.
